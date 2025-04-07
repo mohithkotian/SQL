@@ -1,0 +1,9 @@
+use company;
+create table emp1(empno int(20) primary key,ename varchar(20),job varchar(20),manager_no int(20),sal decimal(10,2));
+desc emp1;
+alter table emp1 add column commission decimal(10,2);
+insert into emp1(empno,ename,job,manager_no,sal,commission)values(1,'yash','HR',78,30000,3),(2,'vinayak','CEO',11,55000,4),(3,'veda','manager',23,500000,5),(4,'vinesh','appdeveloper',56,560000,6);
+select * from emp1;
+update emp1 set job='trainee' where empno=3;
+alter table emp1 rename column sal to salary;
+delete from emp1 where empno=4;
