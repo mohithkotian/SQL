@@ -1,0 +1,10 @@
+use company;
+create table emp2(empno int(20) primary key,ename varchar(20),job varchar(20),manager_no int(20),sal decimal(10,2));
+desc emp2;
+insert into emp2(empno,ename,job,manager_no,sal)values(1,'yash','HR',78,30000),(2,'vinayak','CEO',11,55000),(3,'veda','manager',23,500000),(4,'vinesh','appdeveloper',56,560000);
+select * from emp2;
+select count(ename) as Total_Employees from emp2;
+select max(sal) as Max_sal from emp2;
+select min(sal) as Min_sal from emp2;
+select ename,sal from emp2 order by sal ASC;
+select sal,count(*) as emp2_count from emp2 group by sal;
