@@ -1,0 +1,32 @@
+use company;
+create table emp4(empid int(20) primary key,ename varchar(20) not null,age int(20) not null,sal dec(10,2) not null); 
+desc emp4;
+insert into emp4(empid,ename,age,sal)values(1,'yash',28,300000),(2,'veda',33,500000),(3,'vinayak',35,660000),(4,'vinesh',29,330000),(5,'tharun',39,220000);
+select * from emp4;
+delimiter //
+create procedure fetch_emp_dataa()
+begin
+declare emp_id int;
+declare emp_name varchar(25);
+declare emp_age int;
+declare emp_salary decimal(10,2);
+declare emp_cursor cursor for 
+select empid,ename,age,sal from emp5;
+declare continue handler for NOT FOUND
+set @finished=1;
+open emp_cursor;
+set @finished=0;
+cursor_loop:LOOP
+fetch emp_cursor INTO emp_id,emp_name,emp_age,emp_salary;
+if @finished=1 THEN leave cursor_loop;
+end IF;
+select concat('emp ID:',emp_id
+'NAME:',emp_name,
+'AGE:',emp_age,
+'salary:',emp_salary)
+as emp_INFO;
+end LOOP;
+close emp_cursor;
+end //
+delimiter ;
+CALL fetch_emp_dataa();
